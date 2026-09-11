@@ -107,7 +107,6 @@ tr.dos td{white-space:normal;background:#0e1730;padding:12px 10px 14px}
 .ptr .f b{font-weight:500;word-break:break-all}
 .ptr .f b.ca{color:var(--gold)}
 .ptr .sig{margin-top:14px;padding-top:10px;border-top:1px dashed var(--line);display:flex;justify-content:space-between;gap:12px;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--dim)}
-.ptr .stamp{position:absolute;right:18px;top:14px;border:2px solid var(--red);color:var(--red);font-family:var(--px);font-size:10px;letter-spacing:.1em;padding:6px 8px;transform:rotate(-8deg);opacity:.9}
 .acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
 .acts .key{height:38px;padding:0 16px;font-size:10px}
 .end{margin-top:clamp(40px,6vw,80px);border-top:1px solid var(--line);padding:18px 0 calc(var(--pad) + 6px);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--faint)}
@@ -169,8 +168,7 @@ tr.dos td{white-space:normal;background:#0e1730;padding:12px 10px 14px}
   <section>
     <div class="h"><h2>Periodic transaction report</h2><span>Filed by the token itself &#183; on time</span></div>
     <div class="ptr" id="ptr" title="Copy contract">
-      <div class="stamp" id="stamp">FILED</div>
-      <div class="hd"><span>Form <b>PTR-MOC</b></span><span>Owner <b>Everyone</b></span><span>Chamber <b>Robinhood Chain</b></span></div>
+            <div class="hd"><span>Form <b>PTR-MOC</b></span><span>Owner <b>Everyone</b></span><span>Chamber <b>Robinhood Chain</b></span></div>
       <div class="f">
         <span>Asset</span><b data-name>Meme of Congress</b>
         <span>Ticker</span><b data-ticker>$MOC</b>
@@ -201,8 +199,8 @@ tr.dos td{white-space:normal;background:#0e1730;padding:12px 10px 14px}
   document.querySelectorAll('[data-link="dex"]').forEach(function(a){ a.href = HAS ? window.DEX_HOME + '/' + CA : window.DEX_HOME; a.target = '_blank'; a.rel = 'noopener'; });
   document.querySelectorAll('[data-link="x"]').forEach(function(a){ a.href = S.X_URL || 'https://x.com'; a.target = '_blank'; a.rel = 'noopener'; });
   document.getElementById('upd').textContent = M.totals.updated;
-  var ca = document.getElementById('ca'), cp = document.getElementById('cp'), stamp = document.getElementById('stamp');
-  ca.textContent = HAS ? CA : 'soon'; stamp.textContent = HAS ? 'FILED' : 'PENDING';
+  var ca = document.getElementById('ca'), cp = document.getElementById('cp');
+  ca.textContent = HAS ? CA : 'soon';
   document.getElementById('ptr').addEventListener('click', function(){ var old = cp.textContent; if(HAS){ if(navigator.clipboard) navigator.clipboard.writeText(CA); cp.textContent = 'Copied'; } else cp.textContent = 'Not filed yet'; setTimeout(function(){ cp.textContent = old; }, 1300); });
 
   function money(n){ return n >= 1e9 ? '$' + (n / 1e9).toFixed(2) + 'B' : n >= 1e6 ? '$' + (n / 1e6).toFixed(1) + 'M' : '$' + Math.round(n / 1e3) + 'K'; }
